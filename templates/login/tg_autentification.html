@@ -1,0 +1,18 @@
+{% extends "login/main.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card" style="width: 100%">
+    <div class="card-body">
+      <p class="card-text">Please write to Telegram bot your's email.</p>
+      <a href="https://t.me/LocalVocabBot" class="btn btn-primary" target="_blank">Go to bot!</a>
+      <br>
+      <br>
+      <p class="card-text">And go to your's table</p>
+      <a href="{{ url_for('render_table') }}" class="btn btn-primary">Go to table!</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

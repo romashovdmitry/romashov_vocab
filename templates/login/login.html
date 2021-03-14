@@ -1,0 +1,40 @@
+{% extends "login/main.html" %}
+
+{% block content %}
+
+<div class="container">
+  <form class="form-signin" method="POST" action="{{ url_for('login') }}">
+    <br>
+    <br>
+    <br>
+    {{ form.hidden_tag() }}
+    <h2 class="form-signin-heading">You Know</h2>
+    <label for="email" class="sr-only">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required
+      autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" name='password' id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+      <label>
+        <div class="form-check">
+          {{ form.remember(class="form-check-input") }}
+          {{ form.remember.label(class="form-check-label") }}
+        </div>
+      </label>
+    </div>
+    {% if my_email_error[0] != None %}
+    <code> {{ my_email_error[0] }} </code>
+    <br>
+    <br>
+    {% endif %}
+    {% if my_password_error[0] != None %}
+    <code> {{ my_password_error[0] }} </code>
+    <br>
+    <br>
+    {% endif %}
+<button class="btn btn-lg btn-primary btn-block" type="submit">Done</button>
+    <br>
+    <a href="{{ url_for('test') }}" class="">To registrate</a>
+  </form>
+</div>>
+{% endblock %}

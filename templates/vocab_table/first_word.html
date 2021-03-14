@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+
+<form action="{{url_for('render_table')}}" method="post">
+    {{ form.hidden_tag() }}
+    <legend> To put new word </legend>
+    <p> {{ form.word }} {{form.word.label }}</p>
+    <p> {{ form.definition }} {{ form.definition.label }} </p>
+    <P> {{ form.submit }} </p>
+  </form>
+
+
+  <textarea name="message"> fdgfdgfdg </textarea>
+</body>
+
+</html>

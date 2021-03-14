@@ -1,0 +1,68 @@
+{% extends "vocab_table/main.html" %}
+
+{% block content %}
+<br>
+<br>
+<br>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+
+<ul class=flashes>
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{ message }}
+    </div>
+
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<form action="{{url_for('render_table')}}" method="post" onsubmit="ym(69901012,'reachGoal','add_word')">
+    <div class="form-group">
+        <label for="exampleInputEmail1"> Word </label>
+        <input type="text" class="form-control" name="word" placeholder="Enter new word" required>
+        <small class="form-text text-muted">To write word and definition, that you want to
+            add</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1"> Definition </label>
+        <input type="text" name="definition" class="form-control" placeholder="Definition" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th width="15%" scope="col">Word</th>
+                    <th width="70%"scope="col">Definition</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for p in words %}
+                <tr>
+                    <form method="POST">
+                        <td> {{ p.word_in_whole}} </td>
+                        <td> {{ p.definition_of_word }} </td>
+                        <td>
+                            <a class="btn btn-success"
+                                href="{{url_for('modificateWordInTable', word=p.word_in_whole, id=p.id_in_whole, definition = p.definition_of_word)}}"><i
+                                    class="fas fa-edit"></i>Изменить</a>
+                            <a class="btn btn-danger" href="{{url_for('remove_from_table', id=p.id_in_whole)}}"><i
+                                    class="far fa-trash-alt">Удалить</i></button>
+                        </td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

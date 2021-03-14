@@ -1,0 +1,26 @@
+{% extends "vocab_table/main.html" %}
+
+{% block content %}
+<br>
+<br>
+<br>
+
+<form action="{{url_for('intermediate', id=id  ) }}" method="post">
+    <div class="form-group">
+        <label> Word </label>
+        <input type="text" class="form-control" name="word" aria-describedby="emailHelp" value="{{ word }}" autofocus required>
+        <small id="emailHelp" class="form-text text-muted">To write word and definition, that you want to
+            add</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1"> Definition </label>
+        <input type="text" name="definition" class="form-control" value="{{ definition }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+
+<label for="username" class="sr-only">Username</label>
+<input type="text" min='2' max='5' name="username" id="inputUsername" class="form-control" placeholder="Username" required
+    autofocus>
